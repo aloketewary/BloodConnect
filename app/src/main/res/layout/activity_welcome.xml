@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.aloketewary.bloodconnect.WelcomeActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="@color/lightOrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="36,520"
+            android:layout_gravity="center"
+            android:layout_marginTop="130dp"
+            android:textSize="60sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="USERS REGISTERED
+RIGHT NOW"
+            android:textAlignment="center"
+            android:textColor="@color/lightOrangeDark"
+            android:textSize="30sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/spaceullustration">
+        <Button
+            android:id="@+id/buttonsub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscribe now"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonstyle"
+            />
+    </LinearLayout>
+</LinearLayout>
