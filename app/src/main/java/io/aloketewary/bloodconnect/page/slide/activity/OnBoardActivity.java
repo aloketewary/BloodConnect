@@ -1,6 +1,8 @@
 package io.aloketewary.bloodconnect.page.slide.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import io.aloketewary.bloodconnect.MainActivity;
 import io.aloketewary.bloodconnect.R;
+import io.aloketewary.bloodconnect.util.Constant;
 
 public class OnBoardActivity extends AppCompatActivity {
 
@@ -51,16 +54,6 @@ public class OnBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 slideViewPager.setCurrentItem(sliderCurrentPage - 1);
-            }
-        });
-
-        finishBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                // Start MainActivity.class
-                Intent myIntent = new Intent(OnBoardActivity.this, MainActivity.class);
-                startActivity(myIntent);
-                finish();
             }
         });
     }
@@ -131,4 +124,13 @@ public class OnBoardActivity extends AppCompatActivity {
 
         }
     };
+
+    public void finishTutorial (View view) {
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().putBoolean(Constant.COMPLETED_ONBOARDING_PREF_NAME, true).commit();
+        Intent myIntent = new Intent(OnBoardActivity.this, MainActivity.class);
+        startActivity(myIntent);
+        finish();
+    }
 }

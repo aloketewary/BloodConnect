@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_log_out">Log Out</string>
+    <string name="main_account_settings">Account Settings</string>
+    <string name="reg_create_a_new_account">Create a New Account</string>
+    <string name="already_have_account">Already have Account</string>
+    <string name="login_to_your_account">Login to Your Account</string>
+    <string name="login">LOGIN</string>
+    <string name="hi_there_i_am_using_bloodconnect">Hi there, I am using BloodConnect</string>
+</resources>

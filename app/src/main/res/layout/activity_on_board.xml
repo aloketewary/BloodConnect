@@ -60,5 +60,6 @@
         android:visibility="invisible"
         android:background="@drawable/transparent_button_style"
         android:text="Finish"
+        android:onClick="finishTutorial"
         />
 </RelativeLayout>

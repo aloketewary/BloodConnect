@@ -41,14 +41,14 @@ RIGHT NOW"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/spaceullustration">
-        <Button
-            android:id="@+id/buttonsub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subscribe now"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-            android:background="@drawable/buttonstyle"
-            />
+        <!--<Button-->
+            <!--android:id="@+id/buttonsub"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Subscribe now"-->
+            <!--android:layout_marginTop="25dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@drawable/buttonstyle"-->
+            <!--/>-->
     </LinearLayout>
 </LinearLayout>

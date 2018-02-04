@@ -20,4 +20,31 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="need_a_new_account">Need a new account</string>
+    <string name="reg_email">Email</string>
+    <string name="reg_password">Password</string>
+    <string name="reg_full_name">Full Name</string>
+    <string name="reg_button">Register</string>
+    <string name="main_log_out">Log Out</string>
+    <string name="main_all_users">All Users</string>
+    <string name="main_account_settings">Account Settings</string>
+    <string name="reg_create_a_new_account">Create a New Account</string>
+    <string name="already_have_account">Already have Account</string>
+    <string name="login_to_your_account">Login to Your Account</string>
+    <string name="login">LOGIN</string>
+
+    <!-- This related to welcome -->
+    <bool name="is_tutorial_shown">false</bool>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hi_there_i_am_using_bloodconnect">Hi there, I am using BloodConnect</string>
+    <string name="display_name">Display Name</string>
+    <string name="change_image">Change Image</string>
+    <string name="change_status">Change Status</string>
+    <string name="your_status">Your Status</string>
+    <string name="update_your_status">Update Your Status</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="user_default_name">User Default Name</string>
+    <string name="user_default_status">User default status</string>
 </resources>

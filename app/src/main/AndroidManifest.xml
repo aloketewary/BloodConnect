@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity">
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +33,20 @@
         <activity
             android:name=".page.userAction.activity.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".page.userAction.activity.LoginActivity$ProfileActivity" />
-        <activity android:name=".page.userAction.activity.ProfileActivity"></activity>
+        <activity android:name=".page.userAction.activity.ProfileActivity" />
+        <activity android:name=".page.userAction.activity.StartActivity" />
+        <activity
+            android:name=".page.userAction.activity.RegisterActivity"
+            android:parentActivityName=".page.userAction.activity.StartActivity" />
+        <activity android:name=".page.userAction.activity.AccountActivity" />
+        <activity
+            android:name=".page.userAction.activity.StatusActivity"
+            android:parentActivityName=".page.userAction.activity.AccountActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+        <activity android:name=".page.userAction.activity.UsersActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
