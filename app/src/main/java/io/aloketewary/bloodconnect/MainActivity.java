@@ -11,6 +11,9 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import io.aloketewary.bloodconnect.page.userAction.activity.AccountActivity;
 import io.aloketewary.bloodconnect.page.userAction.activity.StartActivity;
@@ -21,15 +24,21 @@ public class MainActivity extends AppCompatActivity {
     // Firebase Auth
     private FirebaseAuth mAuth;
     private Toolbar mToolbar;
+    private FirebaseUser currentUser;
 
     private ViewPager mViewPager;
     private TabViewPagerAdapter mTabViewPageerAdapter;
     private TabLayout mTabLayout;
 
+    private DatabaseReference mUserRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid());
+        }
         // Set content view
         setContentView(R.layout.activity_main);
         // Map Toolbar
@@ -59,10 +68,20 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         // updateUI(currentUser);
         if(currentUser == null) {
             sentToStart();
+        } else {
+            mUserRef.child("online").setValue("true");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(currentUser != null) {
+            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
         }
     }
 

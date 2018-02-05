@@ -2,15 +2,14 @@ package io.aloketewary.bloodconnect;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import java.util.Timer;
@@ -22,12 +21,12 @@ import io.aloketewary.bloodconnect.util.Constant;
 public class WelcomeActivity extends AppCompatActivity {
 
     LinearLayout line1,line2;
-    Button buttonSub;
+    //Button buttonSub;
     Animation upToDown, downToUp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        int timeout = 2000;
+        int timeout = 3000;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

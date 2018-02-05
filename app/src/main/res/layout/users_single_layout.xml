@@ -23,6 +23,17 @@
         android:layout_toEndOf="@+id/users_single_image"
         android:text="@string/user_default_name" />
 
+    <ImageView
+        android:id="@+id/user_single_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/user_single_status"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        android:layout_toEndOf="@+id/user_single_name"
+        android:src="@drawable/online_status" />
+
     <TextView
         android:id="@+id/user_single_status"
         android:layout_width="match_parent"

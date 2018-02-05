@@ -47,4 +47,11 @@
     <string name="save_changes">Save Changes</string>
     <string name="user_default_name">User Default Name</string>
     <string name="user_default_status">User default status</string>
+    <string name="default_status">Default Status</string>
+    <string name="total_firends">Total Firends</string>
+    <string name="send_friend_request">SEND FRIEND REQUEST</string>
+    <string name="total_friends">Total Friends</string>
+    <string name="decline_friend_request">Decline Friend Request</string>
+    <string name="last_seen">Last seen</string>
+    <string name="enter_message">Enter Message...</string>
 </resources>

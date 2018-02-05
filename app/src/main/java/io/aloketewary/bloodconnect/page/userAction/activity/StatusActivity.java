@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import io.aloketewary.bloodconnect.R;
 
@@ -30,7 +31,7 @@ public class StatusActivity extends AppCompatActivity {
     private ProgressDialog mStatusProgress;
 
     // Firebase
-    private DatabaseReference mStatusDatabase;
+    private DatabaseReference mUserDatabase;
     private FirebaseUser mCurrentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class StatusActivity extends AppCompatActivity {
         // Firebase
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUid = mCurrentUser.getUid();
-        mStatusDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentUid);
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentUid);
 
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +68,7 @@ public class StatusActivity extends AppCompatActivity {
                 String status = mStatus.getEditText().getText().toString();
 
                 if(!TextUtils.isEmpty(status)){
-                    mStatusDatabase.child("status").setValue(status)
+                    mUserDatabase.child("status").setValue(status)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                @Override
                                public void onComplete(@NonNull Task<Void> task) {
@@ -83,5 +84,21 @@ public class StatusActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(mCurrentUser != null){
+            mUserDatabase.child("online").setValue("true");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mCurrentUser != null){
+            mUserDatabase.child("online").setValue(ServerValue.TIMESTAMP);
+        }
     }
 }

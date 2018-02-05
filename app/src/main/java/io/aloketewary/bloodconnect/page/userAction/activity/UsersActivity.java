@@ -11,8 +11,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -24,6 +27,7 @@ public class UsersActivity extends AppCompatActivity {
     private RecyclerView mUserList;
     // Firebase
     private DatabaseReference mUserDatabse;
+    private FirebaseUser mCurrentUser;
 
 
     @Override
@@ -36,6 +40,7 @@ public class UsersActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Users List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Firebase
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mUserDatabse = FirebaseDatabase.getInstance().getReference().child("users");
 
         mUserList = (RecyclerView) findViewById(R.id.users_list);
@@ -47,6 +52,9 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if(mCurrentUser != null) {
+            mUserDatabse.child(mCurrentUser.getUid()).child("online").setValue("true");
+        }
 
         FirebaseRecyclerAdapter<Users, UserViewHolder> firebaseRecyclerAdapter = new
                 FirebaseRecyclerAdapter<Users, UserViewHolder>(
@@ -98,6 +106,15 @@ public class UsersActivity extends AppCompatActivity {
         public void setImage(String thumbImage, Context ctx) {
             CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.users_single_image);
             Picasso.with(ctx).load(thumbImage).placeholder(R.drawable.default_avatar).into(userImageView);
+        }
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mCurrentUser != null) {
+            mUserDatabse.child(mCurrentUser.getUid()).child("online").setValue(ServerValue.TIMESTAMP);
         }
     }
 }
